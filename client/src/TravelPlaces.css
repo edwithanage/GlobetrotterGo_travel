@@ -12,11 +12,14 @@
 }
 
 .filter-buttons {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center;     /* Center vertically if needed */
+  gap: 15px;               /* Space between buttons */
   margin-bottom: 20px;
 }
 
 .filter-buttons button {
-  margin: 0 10px;
   padding: 10px 20px;
   background-color: #007bff;
   color: white;
@@ -28,6 +31,7 @@
 .filter-buttons button:hover {
   background-color: #0056b3;
 }
+
 
 .card-grid {
   display: flex;
@@ -47,6 +51,7 @@
 
 .travel-card img {
   width: 100%;
+  height: 60%;
   border-radius: 6px;
   margin-bottom: 10px;
 }
