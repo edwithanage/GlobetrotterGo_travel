@@ -2,111 +2,28 @@ import React, { useState, useEffect } from 'react';
 import TravelCard from './TravelCard';
 import './TravelPlaces.css';
 
-const dummyPlaces = [
-  {
-    id: 1,
-    name: 'Ella Rock',
-    description: 'Beautiful hike in Sri Lanka',
-    views: 100,
-    distance: 5,
-    date: '2023-07-10',
-    image: 'https://images.squarespace-cdn.com/content/v1/5a3bb03b4c326d76de73ddaa/9732566d-6b33-4a1a-ba0c-1b73ed8848a4/The+Common+Wanderer-9888.jpg'
-  },
-{
-  id: 2,
-  name: 'Sigiriya',
-  description: 'Iconic ancient rock fortress in Sri Lanka',
-  views: 300,
-  distance: 18,
-  date: '2023-07-18',
-  image: 'https://images.squarespace-cdn.com/content/v1/5a3bb03b4c326d76de73ddaa/1721277162374-NZH5HA2ZCKXVMIQN8ZRU/The_Common_Wanderer_-33-2.jpg?format=1000w'
-},
-
-  {
-  id: 3,
-  name: 'Nuwara Eliya',
-  description: 'Cool climate and tea plantations',
-  views: 150,
-  distance: 10,
-  date: '2023-07-12',
-  image: 'https://images.squarespace-cdn.com/content/v1/5a3bb03b4c326d76de73ddaa/1550227945246-Y6QA4SZZKM8VWC7ITX6N/The_Common_Wanderer_best_things_to_do_Sri_Lanka-29.jpg'
-},
-
-  {
-  id: 4,
-  name: 'Anuradhapura',
-  description: 'Ancient city with sacred ruins',
-  views: 150,
-  distance: 10,
-  date: '2023-07-12',
-  image: 'https://passportnomads.com/wp-content/uploads/2020/03/20200310_120928-scaled.jpg'
-},
-  {
-    id: 5,
-    name: 'Nuwara Eliya',
-    description: 'Cool climate and tea plantations',
-    views: 150,
-    distance: 10,
-    date: '2023-07-12',
-    image: 'https://images.squarespace-cdn.com/content/v1/5a3bb03b4c326d76de73ddaa/9732566d-6b33-4a1a-ba0c-1b73ed8848a4/The+Common+Wanderer-9888.jpg'
-  },
-  {
-    id: 6,
-    name: 'Nuwara Eliya',
-    description: 'Cool climate and tea plantations',
-    views: 150,
-    distance: 10,
-    date: '2023-07-12',
-    image: 'https://images.squarespace-cdn.com/content/v1/5a3bb03b4c326d76de73ddaa/9732566d-6b33-4a1a-ba0c-1b73ed8848a4/The+Common+Wanderer-9888.jpg'
-  },
-  {
-    id: 7,
-    name: 'Nuwara Eliya',
-    description: 'Cool climate and tea plantations',
-    views: 150,
-    distance: 10,
-    date: '2023-07-12',
-    image: 'https://images.squarespace-cdn.com/content/v1/5a3bb03b4c326d76de73ddaa/9732566d-6b33-4a1a-ba0c-1b73ed8848a4/The+Common+Wanderer-9888.jpg'
-  },
-  {
-    id: 8,
-    name: 'Nuwara Eliya',
-    description: 'Cool climate and tea plantations',
-    views: 150,
-    distance: 10,
-    date: '2023-07-12',
-    image: 'https://images.squarespace-cdn.com/content/v1/5a3bb03b4c326d76de73ddaa/9732566d-6b33-4a1a-ba0c-1b73ed8848a4/The+Common+Wanderer-9888.jpg'
-  }
-];
-
-
-
 function TravelPlaces() {
-  const [places, setPlaces] = useState(dummyPlaces);
+  const [places, setPlaces] = useState([]);
   const [search, setSearch] = useState('');
   const [filter, setFilter] = useState('');
 
   useEffect(() => {
-    let filtered = dummyPlaces;
+    fetch('http://localhost:3001/travel')
+      .then(res => res.json())
+      .then(data => setPlaces(data))
+      .catch(err => console.error('Failed to load travel places:', err));
+  }, []);
 
-    // Apply search
-    if (search) {
-      filtered = filtered.filter(place =>
-        place.name.toLowerCase().includes(search.toLowerCase())
-      );
-    }
-
-    // Apply filter
-    if (filter === 'most-viewed') {
-      filtered = [...filtered].sort((a, b) => b.views - a.views);
-    } else if (filter === 'nearby') {
-      filtered = [...filtered].sort((a, b) => a.distance - b.distance);
-    } else if (filter === 'latest') {
-      filtered = [...filtered].sort((a, b) => new Date(b.date) - new Date(a.date));
-    }
-
-    setPlaces(filtered);
-  }, [search, filter]);
+  const filteredPlaces = places
+    .filter(place =>
+      place.name.toLowerCase().includes(search.toLowerCase())
+    )
+    .sort((a, b) => {
+      if (filter === 'most-viewed') return b.views - a.views;
+      if (filter === 'nearby') return a.distance - b.distance;
+      if (filter === 'latest') return new Date(b.date) - new Date(a.date);
+      return 0;
+    });
 
   return (
     <div className="travel-container">
@@ -127,8 +44,8 @@ function TravelPlaces() {
       </div>
 
       <div className="card-grid">
-        {places.map((place) => (
-          <TravelCard key={place.id} place={place} />
+        {filteredPlaces.map((place) => (
+          <TravelCard key={place._id} place={place} />
         ))}
       </div>
     </div>

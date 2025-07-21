@@ -2,6 +2,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const bcrypt = require("bcryptjs");
+const TravelPlace = require("./models/TravelPlace");
+
 
 const app = express();
 app.use(express.json());
@@ -75,4 +77,35 @@ app.post("/login", async (req, res) => {
 // ✅ Start server
 app.listen(3001, () => {
   console.log("🚀 Server running on http://localhost:3001");
+});
+
+// Travel Routes
+
+// GET all travel places
+app.get("/travel", async (req, res) => {
+  try {
+    const places = await TravelPlace.find();
+    res.json(places);
+  } catch (err) {
+    res.status(500).json({ error: "Failed to fetch travel places" });
+  }
+});
+
+// POST create new travel place
+app.post("/travel", async (req, res) => {
+  const { name, description, views, distance, date, image } = req.body;
+  try {
+    const newPlace = new TravelPlace({
+      name,
+      description,
+      views,
+      distance,
+      date,
+      image,
+    });
+    await newPlace.save();
+    res.status(201).json({ message: "Travel place added successfully" });
+  } catch (err) {
+    res.status(500).json({ error: "Failed to add travel place" });
+  }
 });

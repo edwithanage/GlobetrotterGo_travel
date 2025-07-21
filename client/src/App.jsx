@@ -6,6 +6,8 @@ import Login from './Login'; // ✅ Import Login component
 import TravelPlaces from './TravelPlaces';
 import TravelCard from './TravelCard';
 import ReadMore from './ReadMore';
+import AddTravelPlaceForm from './AddTravelPlaceForm';
+
 
 
 function App() {
@@ -16,6 +18,8 @@ function App() {
         <Route path="/login" element={<Login />} /> {/* ✅ Add login route */}
         <Route path="/travel" element={<TravelPlaces />} />
         <Route path="/place/:id" element={<ReadMore />} />
+        <Route path="/add-place" element={<AddTravelPlaceForm />} />
+        
 
         
 
