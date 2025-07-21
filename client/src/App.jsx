@@ -5,6 +5,7 @@ import Signup from './Signup';
 import Login from './Login'; // ✅ Import Login component
 import TravelPlaces from './TravelPlaces';
 import TravelCard from './TravelCard';
+import ReadMore from './ReadMore';
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <Route path="/register" element={<Signup />} />
         <Route path="/login" element={<Login />} /> {/* ✅ Add login route */}
         <Route path="/travel" element={<TravelPlaces />} />
+        <Route path="/place/:id" element={<ReadMore />} />
 
         
 
