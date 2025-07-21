@@ -15,31 +15,32 @@ const dummyPlaces = [
 {
   id: 2,
   name: 'Sigiriya',
-  description: 'Ancient rock fortress',
-  views: 200,
-  distance: 20,
-  date: '2023-07-15',
-  image: 'https://images.squarespace-cdn.com/content/v1/5a3bb03b4c326d76de73ddaa/9732566d-6b33-4a1a-ba0c-1b73ed8848a4/The+Common+Wanderer-9888.jpg'
+  description: 'Iconic ancient rock fortress in Sri Lanka',
+  views: 300,
+  distance: 18,
+  date: '2023-07-18',
+  image: 'https://images.squarespace-cdn.com/content/v1/5a3bb03b4c326d76de73ddaa/1721277162374-NZH5HA2ZCKXVMIQN8ZRU/The_Common_Wanderer_-33-2.jpg?format=1000w'
 },
 
   {
-    id: 3,
-    name: 'Nuwara Eliya',
-    description: 'Cool climate and tea plantations',
-    views: 150,
-    distance: 10,
-    date: '2023-07-12',
-    image: 'https://images.squarespace-cdn.com/content/v1/5a3bb03b4c326d76de73ddaa/9732566d-6b33-4a1a-ba0c-1b73ed8848a4/The+Common+Wanderer-9888.jpg'
-  },
+  id: 3,
+  name: 'Nuwara Eliya',
+  description: 'Cool climate and tea plantations',
+  views: 150,
+  distance: 10,
+  date: '2023-07-12',
+  image: 'https://images.squarespace-cdn.com/content/v1/5a3bb03b4c326d76de73ddaa/1550227945246-Y6QA4SZZKM8VWC7ITX6N/The_Common_Wanderer_best_things_to_do_Sri_Lanka-29.jpg'
+},
+
   {
-    id: 4,
-    name: 'Anuradhapura',
-    description: 'Cool climate and tea plantations',
-    views: 150,
-    distance: 10,
-    date: '2023-07-12',
-    image: 'https://images.squarespace-cdn.com/content/v1/5a3bb03b4c326d76de73ddaa/9732566d-6b33-4a1a-ba0c-1b73ed8848a4/The+Common+Wanderer-9888.jpg'
-  },
+  id: 4,
+  name: 'Anuradhapura',
+  description: 'Ancient city with sacred ruins',
+  views: 150,
+  distance: 10,
+  date: '2023-07-12',
+  image: 'https://passportnomads.com/wp-content/uploads/2020/03/20200310_120928-scaled.jpg'
+},
   {
     id: 5,
     name: 'Nuwara Eliya',
