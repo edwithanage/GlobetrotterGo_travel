@@ -1,19 +1,37 @@
+/* TravelCard.css */
 .travel-card {
-  border: 1px solid #ccc;
-  border-radius: 10px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
   padding: 16px;
-  margin: 10px;
-  text-align: center;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  width: 300px;
+  background-color: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: transform 0.2s ease;
 }
 
-.travel-card img {
-  max-width: 100%;
-  height: auto;
+.travel-card:hover {
+  transform: scale(1.02);
+}
+
+.travel-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
   border-radius: 8px;
+  margin-bottom: 10px;
 }
 
-.travel-card h2 {
-  font-size: 1.2rem;
+.read-more-btn {
   margin-top: 10px;
+  background-color: #0099ff;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.read-more-btn:hover {
+  background-color: #007acc;
 }

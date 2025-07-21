@@ -19,7 +19,8 @@ function App() {
         <Route path="/travel" element={<TravelPlaces />} />
         <Route path="/place/:id" element={<ReadMore />} />
         <Route path="/add-place" element={<AddTravelPlaceForm />} />
-        
+        <Route path="/place/:id" element={<ReadMore />} />
+
 
         
 

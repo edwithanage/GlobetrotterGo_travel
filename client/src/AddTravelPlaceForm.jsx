@@ -1,53 +1,47 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import axios from "axios";
+import "./AddTravelPlaceForm.css";
 
 function AddTravelPlaceForm() {
   const [formData, setFormData] = useState({
-    name: '',
-    description: '',
-    views: '',
-    distance: '',
-    date: '',
-    image: ''
+    name: "",
+    description: "",
+    views: "",
+    distance: "",
+    date: "",
+    image: ""
   });
 
-  const handleChange = e => {
-    setFormData(prev => ({
+  const handleChange = (e) => {
+    setFormData((prev) => ({
       ...prev,
       [e.target.name]: e.target.value
     }));
   };
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:3001/travel', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
+      await axios.post("http://localhost:3001/travel", formData);
+      alert("✅ Travel place added!");
+      setFormData({
+        name: "",
+        description: "",
+        views: "",
+        distance: "",
+        date: "",
+        image: ""
       });
-      if (response.ok) {
-        alert('Travel place added successfully!');
-        setFormData({
-          name: '',
-          description: '',
-          views: '',
-          distance: '',
-          date: '',
-          image: ''
-        });
-      } else {
-        alert('Failed to add travel place.');
-      }
-    } catch (error) {
-      console.error('Error adding place:', error);
-      alert('Error occurred.');
+    } catch (err) {
+      console.error("Error adding travel place:", err);
+      alert("❌ Failed to add travel place");
     }
   };
 
   return (
-    <div style={{ maxWidth: '600px', margin: 'auto', padding: '20px' }}>
+    <div className="add-form-container">
       <h2>Add New Travel Place</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="travel-form">
         <input
           type="text"
           name="name"
@@ -55,41 +49,45 @@ function AddTravelPlaceForm() {
           value={formData.name}
           onChange={handleChange}
           required
-        /><br /><br />
+        />
         <textarea
           name="description"
           placeholder="Description"
           value={formData.description}
           onChange={handleChange}
           required
-        /><br /><br />
+        />
         <input
           type="number"
           name="views"
           placeholder="Views"
           value={formData.views}
           onChange={handleChange}
-        /><br /><br />
+          required
+        />
         <input
-          type="number"
+          type="text"
           name="distance"
-          placeholder="Distance (km)"
+          placeholder="Distance (e.g. 5km)"
           value={formData.distance}
           onChange={handleChange}
-        /><br /><br />
+          required
+        />
         <input
           type="date"
           name="date"
           value={formData.date}
           onChange={handleChange}
-        /><br /><br />
+          required
+        />
         <input
           type="text"
           name="image"
           placeholder="Image URL"
           value={formData.image}
           onChange={handleChange}
-        /><br /><br />
+          required
+        />
         <button type="submit">Add Place</button>
       </form>
     </div>

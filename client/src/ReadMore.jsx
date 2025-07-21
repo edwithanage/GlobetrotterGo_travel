@@ -1,5 +1,7 @@
+// ReadMore.jsx
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import './ReadMore.css';
 
 function ReadMore() {
   const { id } = useParams();
@@ -15,13 +17,15 @@ function ReadMore() {
   if (!place) return <p>Loading...</p>;
 
   return (
-    <div style={{ maxWidth: '600px', margin: 'auto' }}>
-      <img src={place.image} alt={place.name} style={{ width: '100%' }} />
+    <div className="readmore-container">
+      <img src={place.image} alt={place.name} className="readmore-image" />
       <h2>{place.name}</h2>
-      <p>{place.description}</p>
-      <p><strong>Views:</strong> {place.views}</p>
-      <p><strong>Distance:</strong> {place.distance} km</p>
-      <p><strong>Date:</strong> {new Date(place.date).toLocaleDateString()}</p>
+      <p className="description">{place.description}</p>
+      <div className="details">
+        <p><strong>Views:</strong> {place.views}</p>
+        <p><strong>Distance:</strong> {place.distance} km</p>
+        <p><strong>Date:</strong> {new Date(place.date).toLocaleDateString()}</p>
+      </div>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const TravelPlace = require('../models/TravelPlace');
+const TravelPlace = require('../models/TravelPlace'); // ✅ correct model
 
 // Get all travel places
 router.get('/', async (req, res) => {
@@ -11,20 +11,22 @@ router.get('/', async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
-// GET one
+
+// Get a single travel place by ID
 router.get('/:id', async (req, res) => {
   try {
-    const place = await Travel.findById(req.params.id);
+    const place = await TravelPlace.findById(req.params.id); // ✅ use correct model
     if (!place) return res.status(404).json({ error: 'Not found' });
     res.json(place);
   } catch (err) {
     res.status(500).json({ error: 'Error fetching place' });
   }
 });
-// POST
+
+// Add a new travel place
 router.post('/', async (req, res) => {
   try {
-    const newPlace = new Travel(req.body);
+    const newPlace = new TravelPlace(req.body); // ✅ use correct model
     await newPlace.save();
     res.status(201).json(newPlace);
   } catch (err) {
