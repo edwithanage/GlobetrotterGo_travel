@@ -1,0 +1,52 @@
+.travel-container {
+  padding: 30px;
+  text-align: center;
+}
+
+.search-input {
+  width: 60%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.filter-buttons {
+  margin-bottom: 20px;
+}
+
+.filter-buttons button {
+  margin: 0 10px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.filter-buttons button:hover {
+  background-color: #0056b3;
+}
+
+.card-grid {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.travel-card {
+  width: 300px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  text-align: left;
+}
+
+.travel-card img {
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
