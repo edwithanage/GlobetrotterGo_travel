@@ -55,3 +55,8 @@
   border-radius: 6px;
   margin-bottom: 10px;
 }
+/* Add this to your global CSS or in Travel.css, AddTravelPlaceForm.css etc. */
+.page-container {
+  margin-top: 70px;
+  padding: 20px;
+}
