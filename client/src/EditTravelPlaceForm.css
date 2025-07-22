@@ -2,9 +2,9 @@
   max-width: 500px;
   margin: 40px auto;
   padding: 30px;
-  background-color: #ffffff;
+  background-color: #f0fdf4; /* soft green background */
   border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 25px rgba(34, 197, 94, 0.2); /* greenish shadow */
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -12,7 +12,7 @@
   margin-bottom: 20px;
   text-align: center;
   font-size: 26px;
-  color: #333;
+  color: #166534; /* dark green text */
 }
 
 .travel-form input,
@@ -20,9 +20,31 @@
   width: 100%;
   padding: 12px 15px;
   margin-bottom: 16px;
-  border: 1px solid #ccc;
+  border: 1px solid #bbf7d0; /* light green border */
   border-radius: 12px;
   font-size: 16px;
   background-color: #f9f9f9;
   transition: border-color 0.3s ease;
-};
+}
+
+.travel-form input:focus,
+.travel-form textarea:focus {
+  outline: none;
+  border-color: #22c55e; /* medium green when focused */
+}
+
+.travel-form button {
+  padding: 12px;
+  background-color: #22c55e; /* main green */
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.travel-form button:hover {
+  background-color: #15803d; /* darker green */
+}

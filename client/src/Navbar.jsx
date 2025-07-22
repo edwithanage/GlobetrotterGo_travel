@@ -5,7 +5,9 @@ function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
+    
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary px-4">
+        
       <Link className="navbar-brand" to="/travel">🌍 TravelRoutes</Link>
 
       {/* Navbar toggler for mobile */}

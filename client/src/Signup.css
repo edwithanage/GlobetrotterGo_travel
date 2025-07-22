@@ -1,7 +1,85 @@
 /* Signup.css */
 form {
-  background: #f9f9f9;
-  padding: 20px;
+  background: #e9f9ee; /* Light green background */
+  padding: 30px 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 128, 0, 0.1);
+}
+
+h2 {
+  color: #2e7d32; /* Dark green */
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+label {
+  font-weight: 600;
+  color: #2e7d32;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border: 1.5px solid #a5d6a7; /* soft green border */
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  background-color: #f1fdf3;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+  outline: none;
+  border-color: #43a047; /* brighter green on focus */
+  background-color: #e0f2e9;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #43a047; /* primary green */
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #388e3c; /* darker green on hover */
+}
+
+.mt-3 {
+  margin-top: 20px !important;
+}
+
+.text-center {
+  text-align: center;
+}
+
+a {
+  color: #388e3c;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+button.btn-primary {
+  background-color: #43a047 !important; /* your green */
+  border-color: #43a047 !important;
+  color: white !important;
+}
+
+button.btn-primary:hover {
+  background-color: #388e3c !important; /* darker green */
+  border-color: #388e3c !important;
 }
