@@ -7,6 +7,10 @@ import TravelPlaces from './TravelPlaces';
 import TravelCard from './TravelCard';
 import ReadMore from './ReadMore';
 import AddTravelPlaceForm from './AddTravelPlaceForm';
+import EditTravelPlaceForm from "./EditTravelPlaceForm";
+
+;
+
 
 
 
@@ -20,6 +24,7 @@ function App() {
         <Route path="/place/:id" element={<ReadMore />} />
         <Route path="/add-place" element={<AddTravelPlaceForm />} />
         <Route path="/place/:id" element={<ReadMore />} />
+        <Route path="/edit/:id" element={<EditTravelPlaceForm />} />
 
 
         

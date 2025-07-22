@@ -9,6 +9,7 @@ function TravelCard({ place }) {
   const handleClick = () => {
     navigate(`/place/${place._id}`);
   };
+<button onClick={() => navigate(`/edit/${place._id}`)}>Edit</button>
 
   return (
     <div className="travel-card" onClick={handleClick}>

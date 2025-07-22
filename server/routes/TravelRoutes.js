@@ -34,4 +34,19 @@ router.post('/', async (req, res) => {
   }
 });
 
+// PUT (Update a travel post by ID)
+router.put('/:id', async (req, res) => {
+  try {
+    const updatedPlace = await TravelPlace.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    );
+    if (!updatedPlace) return res.status(404).json({ error: 'Place not found' });
+    res.json(updatedPlace);
+  } catch (err) {
+    res.status(500).json({ error: 'Error updating travel place' });
+  }
+});
+
 module.exports = router;
