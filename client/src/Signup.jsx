@@ -1,9 +1,7 @@
-// client/src/components/Signup.jsx
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './Signup.css';
-
 
 function Signup() {
   const [formData, setFormData] = useState({
@@ -39,8 +37,9 @@ function Signup() {
 
   return (
     <div className="container mt-5" style={{ maxWidth: '400px' }}>
-      <h2 className="mb-4 text-center">Register</h2>
       <form onSubmit={handleSubmit}>
+        <h2 className="mb-4 text-center">Register</h2>
+
         <div className="mb-3">
           <label>Name</label>
           <input
