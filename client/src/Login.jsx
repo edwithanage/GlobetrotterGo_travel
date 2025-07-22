@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
-import './Login.css'; // ✅ Import your CSS
+import { Link, useNavigate } from 'react-router-dom'; // ✅ import useNavigate
+import './Login.css';
 
 function Login() {
+  const navigate = useNavigate(); // ✅ initialize
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -19,6 +20,10 @@ function Login() {
       const res = await axios.post("http://localhost:3001/login", formData);
       alert(res.data.message);
       setFormData({ email: '', password: '' });
+
+      // ✅ Redirect to travel page on successful login
+      navigate("/travel");
+
     } catch (err) {
       alert(err.response?.data?.error || "Login failed");
     }
