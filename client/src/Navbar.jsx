@@ -1,9 +1,9 @@
-// src/components/Navbar.jsx
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 function Navbar() {
   const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false);
   const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
 
   const handleLogout = () => {
@@ -12,52 +12,48 @@ function Navbar() {
   };
 
   return (
-    <nav style={styles.nav}>
-      <h2 style={styles.logo}>GlobetrotterGo</h2>
-      <div style={styles.links}>
-        {isLoggedIn && (
-          <>
-            <Link to="/travel" style={styles.link}>Home</Link>
-            <Link to="/add" style={styles.link}>Add Place</Link>
-            <button onClick={handleLogout} style={styles.logoutBtn}>Logout</button>
-          </>
-        )}
-        
+    <nav className="navbar navbar-expand-lg navbar-dark bg-primary px-4">
+      <Link className="navbar-brand" to="/travel">🌍 TravelRoutes</Link>
+
+      {/* Navbar toggler */}
+      <button
+        className="navbar-toggler"
+        type="button"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <span className="navbar-toggler-icon"></span>
+      </button>
+
+      <div className={`collapse navbar-collapse ${isOpen ? 'show' : ''}`}>
+        <ul className="navbar-nav ms-auto">
+          {isLoggedIn ? (
+            <>
+              <li className="nav-item">
+                <Link className="nav-link" to="/travel">Home</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/add-place">Add Place</Link>
+              </li>
+              <li className="nav-item">
+                <button className="btn btn-danger btn-sm mt-1 ms-2" onClick={handleLogout}>
+                  Logout
+                </button>
+              </li>
+            </>
+          ) : (
+            <>
+              <li className="nav-item">
+                <Link className="nav-link" to="/login">Login</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/register">Register</Link>
+              </li>
+            </>
+          )}
+        </ul>
       </div>
     </nav>
   );
 }
-
-const styles = {
-  nav: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: '10px 20px',
-    backgroundColor: '#0d6efd',
-    color: 'white',
-  },
-  logo: {
-    margin: 0,
-  },
-  links: {
-    display: 'flex',
-    gap: '15px',
-    alignItems: 'center',
-  },
-  link: {
-    color: 'white',
-    textDecoration: 'none',
-    fontWeight: 'bold',
-  },
-  logoutBtn: {
-    backgroundColor: '#dc3545',
-    color: 'white',
-    border: 'none',
-    padding: '5px 10px',
-    cursor: 'pointer',
-    borderRadius: '5px',
-  },
-};
 
 export default Navbar;
