@@ -1,5 +1,4 @@
-// App.js
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Signup from './Signup';
 import Login from './Login';
@@ -8,12 +7,17 @@ import TravelCard from './TravelCard';
 import ReadMore from './ReadMore';
 import AddTravelPlaceForm from './AddTravelPlaceForm';
 import EditTravelPlaceForm from './EditTravelPlaceForm';
-import Navbar from './Navbar'; // ✅ Import Navbar
+import Navbar from './Navbar';
 
-function App() {
+function AppWrapper() {
+  const location = useLocation();
+  const hideNavbarPaths = ['/login', '/register'];
+
+  const shouldHideNavbar = hideNavbarPaths.includes(location.pathname);
+
   return (
-    <BrowserRouter>
-      <Navbar /> {/* ✅ Add Navbar at the top */}
+    <>
+      {!shouldHideNavbar && <Navbar />}
       <Routes>
         <Route path="/register" element={<Signup />} />
         <Route path="/login" element={<Login />} />
@@ -22,6 +26,14 @@ function App() {
         <Route path="/add-place" element={<AddTravelPlaceForm />} />
         <Route path="/edit/:id" element={<EditTravelPlaceForm />} />
       </Routes>
+    </>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <AppWrapper />
     </BrowserRouter>
   );
 }
