@@ -22,7 +22,7 @@ function AppWrapper() {
         <Route path="/register" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/travel" element={<TravelPlaces />} />
-        <Route path="/place/:id" element={<ReadMore />} />
+        <Route path="/readmore/:id" element={<ReadMore />} />
         <Route path="/add-place" element={<AddTravelPlaceForm />} />
         <Route path="/edit/:id" element={<EditTravelPlaceForm />} />
       </Routes>
