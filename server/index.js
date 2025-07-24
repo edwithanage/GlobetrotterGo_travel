@@ -109,3 +109,15 @@ app.post("/travel", async (req, res) => {
     res.status(500).json({ error: "Failed to add travel place" });
   }
 });
+// ✅ GET travel place by ID
+app.get("/travel/:id", async (req, res) => {
+  try {
+    const place = await TravelPlace.findById(req.params.id);
+    if (!place) {
+      return res.status(404).json({ error: "Travel place not found" });
+    }
+    res.json(place);
+  } catch (err) {
+    res.status(500).json({ error: "Failed to fetch travel place" });
+  }
+});

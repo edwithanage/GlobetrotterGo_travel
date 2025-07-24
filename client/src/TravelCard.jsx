@@ -1,22 +1,16 @@
-// TravelCard.jsx
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import './TravelCard.css';
+import { Link } from 'react-router-dom';
 
 function TravelCard({ place }) {
-  const navigate = useNavigate();
-
-  const handleClick = () => {
-    navigate(`/place/${place._id}`);
-  };
-<button onClick={() => navigate(`/edit/${place._id}`)}>Edit</button>
-
   return (
-    <div className="travel-card" onClick={handleClick}>
-      <img src={place.image} alt={place.name} className="travel-image" />
-      <h3>{place.name}</h3>
-      <p>{place.description.slice(0, 100)}...</p>
-      <button className="read-more-btn">Read More</button>
+    <div className="card m-3" style={{ width: "18rem" }}>
+      <img src={place.image} className="card-img-top" alt={place.name} />
+      <div className="card-body">
+        <h5 className="card-title">{place.name}</h5>
+        <p className="card-text">{place.description.substring(0, 100)}...</p>
+        <Link to={`/readmore/${place._id}`} className="btn btn-success">
+          Read More
+        </Link>
+      </div>
     </div>
   );
 }
