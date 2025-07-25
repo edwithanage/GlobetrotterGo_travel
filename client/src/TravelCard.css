@@ -103,3 +103,16 @@
   color: #2e7d32; /* dark green heading */
   margin-bottom: 25px;
 }
+/* Make the card link not affect layout */
+.travel-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  width: 300px;
+}
+
+.travel-card-link:hover .travel-card {
+  transform: scale(1.02);
+  box-shadow: 0 4px 15px rgba(46, 125, 50, 0.4); /* green shadow on hover */
+}
+

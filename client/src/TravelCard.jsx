@@ -1,17 +1,15 @@
 import { Link } from 'react-router-dom';
+import './TravelCard.css'; // Make sure you import your card styles
 
 function TravelCard({ place }) {
   return (
-    <div className="card m-3" style={{ width: "18rem" }}>
-      <img src={place.image} className="card-img-top" alt={place.name} />
-      <div className="card-body">
-        <h5 className="card-title">{place.name}</h5>
-        <p className="card-text">{place.description.substring(0, 100)}...</p>
-        <Link to={`/readmore/${place._id}`} className="btn btn-success">
-          Read More
-        </Link>
+    <Link to={`/readmore/${place._id}`} className="travel-card-link">
+      <div className="travel-card">
+        <img src={place.image} alt={place.name} />
+        <h5>{place.name}</h5>
+        <p>{place.description.substring(0, 100)}...</p>
       </div>
-    </div>
+    </Link>
   );
 }
 
