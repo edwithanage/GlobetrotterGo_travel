@@ -19,8 +19,16 @@ function Login() {
     try {
       const res = await axios.post("http://localhost:3001/login", formData);
       alert(res.data.message);
+
       setFormData({ email: '', password: '' });
-      navigate("/travel");
+
+      // ✅ Redirect based on user role
+      if (res.data.role === "admin") {
+        navigate("/admin"); // redirect to admin page
+      } else {
+        navigate("/travel"); // redirect to travel page
+      }
+
     } catch (err) {
       alert(err.response?.data?.error || "Login failed");
     }

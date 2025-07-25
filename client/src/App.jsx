@@ -8,6 +8,10 @@ import ReadMore from './ReadMore';
 import AddTravelPlaceForm from './AddTravelPlaceForm';
 import EditTravelPlaceForm from './EditTravelPlaceForm';
 import Navbar from './Navbar';
+import AdminDashboard from './AdminDashboard';
+
+
+
 
 
 function AppWrapper() {
@@ -25,6 +29,7 @@ function AppWrapper() {
         <Route path="/readmore/:id" element={<ReadMore />} />
         <Route path="/add-place" element={<AddTravelPlaceForm />} />
         <Route path="/edit/:id" element={<EditTravelPlaceForm />} />
+        <Route path="/admin-dashboard" element={<AdminDashboard />} />
       </Routes>
     </>
   );

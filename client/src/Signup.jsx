@@ -7,7 +7,8 @@ function Signup() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    password: ''
+    password: '',
+    role: 'user' // default role
   });
 
   const handleChange = (e) => {
@@ -24,7 +25,7 @@ function Signup() {
     try {
       const res = await axios.post("http://localhost:3001/register", formData);
       alert(res.data.message);
-      setFormData({ name: '', email: '', password: '' });
+      setFormData({ name: '', email: '', password: '', role: 'user' });
     } catch (err) {
       alert(err.response?.data?.message || "Registration failed");
       console.error("Registration error:", err);
@@ -71,6 +72,21 @@ function Signup() {
               onChange={handleChange}
               required
             />
+          </div>
+
+          {/* 👇 Role Dropdown */}
+          <div className="mb-3">
+            <label>Role</label>
+            <select
+              name="role"
+              className="form-control"
+              value={formData.role}
+              onChange={handleChange}
+              required
+            >
+              <option value="user">User</option>
+              <option value="admin">Admin</option>
+            </select>
           </div>
 
           <button type="submit" className="btn btn-primary w-100">Register</button>

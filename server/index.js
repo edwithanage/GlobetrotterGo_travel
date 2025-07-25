@@ -4,7 +4,6 @@ const cors = require("cors");
 const bcrypt = require("bcryptjs");
 const TravelPlace = require("./models/TravelPlace");
 
-
 const app = express();
 app.use(express.json());
 app.use(cors());
@@ -17,17 +16,18 @@ mongoose.connect("mongodb://127.0.0.1:27017/employee", {
 .then(() => console.log("✅ MongoDB Connected"))
 .catch((err) => console.error("❌ MongoDB connection failed:", err));
 
-// ✅ Define User Schema
+// ✅ Define User Schema with Role
 const UserSchema = new mongoose.Schema({
   name: String,
-  email: String,
-  password: String
+  email: { type: String, required: true, unique: true },
+  password: String,
+  role: { type: String, default: "user" } // default role is 'user'
 });
 const User = mongoose.model("User", UserSchema);
 
-// ✅ Register Route (with hashed password)
+// ✅ Register Route
 app.post("/register", async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, password, role = "user" } = req.body;
 
   try {
     const existingUser = await User.findOne({ email });
@@ -41,7 +41,8 @@ app.post("/register", async (req, res) => {
     const newUser = new User({
       name,
       email,
-      password: hashedPassword
+      password: hashedPassword,
+      role
     });
 
     await newUser.save();
@@ -52,7 +53,7 @@ app.post("/register", async (req, res) => {
   }
 });
 
-// ✅ Login Route (password comparison)
+// ✅ Login Route
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
@@ -67,7 +68,10 @@ app.post("/login", async (req, res) => {
       return res.status(400).json({ error: "Invalid password" });
     }
 
-    res.status(200).json({ message: "✅ Login successful" });
+    res.status(200).json({
+      message: "✅ Login successful",
+      role: user.role // return role to frontend
+    });
   } catch (err) {
     console.error("❌ Login error:", err);
     res.status(500).json({ error: "❌ Login failed" });
@@ -79,7 +83,7 @@ app.listen(3001, () => {
   console.log("🚀 Server running on http://localhost:3001");
 });
 
-// Travel Routes
+// ✅ Travel Routes
 
 // GET all travel places
 app.get("/travel", async (req, res) => {
@@ -101,7 +105,7 @@ app.post("/travel", async (req, res) => {
       views,
       distance,
       date,
-      image,
+      image
     });
     await newPlace.save();
     res.status(201).json({ message: "Travel place added successfully" });
@@ -110,7 +114,7 @@ app.post("/travel", async (req, res) => {
   }
 });
 
-// ✅ GET travel place by ID
+// GET travel place by ID
 app.get("/travel/:id", async (req, res) => {
   try {
     const place = await TravelPlace.findById(req.params.id);
