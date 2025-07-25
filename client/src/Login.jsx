@@ -10,23 +10,29 @@ function Login() {
     password: ''
   });
 
+  // Handle input change
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  // Handle login submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const res = await axios.post("http://localhost:3001/login", formData);
+
       alert(res.data.message);
+
+      // ✅ Store user info in localStorage
+      localStorage.setItem("user", JSON.stringify(res.data));
 
       setFormData({ email: '', password: '' });
 
-      // ✅ Redirect based on user role
+      // ✅ Redirect based on role
       if (res.data.role === "admin") {
-        navigate("/admin"); // redirect to admin page
+        navigate("/admin-dashboard");
       } else {
-        navigate("/travel"); // redirect to travel page
+        navigate("/travel");
       }
 
     } catch (err) {

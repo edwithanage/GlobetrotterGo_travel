@@ -25,13 +25,13 @@ function AdminDashboard() {
         <p>You have full access to manage travel content.</p>
 
         <div className="admin-buttons">
-          <button onClick={() => navigate('/add-place')} className="btn btn-success">
+          <button className="admin-btn green" onClick={() => navigate('/add-place')}>
             ➕ Add Travel Place
           </button>
-          <button onClick={() => navigate('/travel')} className="btn btn-primary">
+          <button className="admin-btn blue" onClick={() => navigate('/travel')}>
             📍 View All Places
           </button>
-          <button onClick={handleLogout} className="btn btn-danger">
+          <button className="admin-btn red" onClick={handleLogout}>
             🚪 Logout
           </button>
         </div>

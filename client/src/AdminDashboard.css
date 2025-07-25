@@ -1,29 +1,116 @@
-.admin-preview-section {
-  margin-top: 40px;
-  background: #fff;
-  color: #333;
-  padding: 20px 40px;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  width: 90%;
-  max-width: 1100px;
+/* Container for entire dashboard */
+.admin-dashboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  background-color: #f0f2f5;
+  min-height: 100vh;
 }
 
+/* Main welcome card */
+.admin-card {
+  background-color: #ffffff;
+  padding: 30px 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 700px;
+  width: 100%;
+}
+
+/* Headings */
+.admin-card h1 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.admin-card p {
+  color: #666;
+  font-size: 16px;
+}
+
+/* Horizontal button row */
+.admin-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  margin-top: 25px;
+}
+
+/* Button base style */
+.admin-btn {
+  padding: 12px 20px;
+  font-size: 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #fff;
+  transition: 0.3s ease;
+  min-width: 160px;
+}
+
+/* Individual button colors */
+.admin-btn.green {
+  background-color: #28a745;
+}
+
+.admin-btn.green:hover {
+  background-color: #218838;
+}
+
+.admin-btn.blue {
+  background-color: #007bff;
+}
+
+.admin-btn.blue:hover {
+  background-color: #0056b3;
+}
+
+.admin-btn.red {
+  background-color: #dc3545;
+}
+
+.admin-btn.red:hover {
+  background-color: #c82333;
+}
+
+/* Preview section for recently added places */
+.admin-preview-section {
+  margin-top: 50px;
+  background: #fff;
+  color: #333;
+  padding: 25px 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 1200px;
+}
+
+/* Section heading */
+.admin-preview-section h3 {
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+/* Grid layout for travel cards */
 .card-grid {
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
-  margin-top: 20px;
   justify-content: center;
 }
 
+/* Individual travel card */
 .admin-preview-card {
   background: #f9f9f9;
   border-radius: 12px;
   padding: 15px;
   width: 250px;
   text-align: center;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
   transition: 0.3s ease;
 }
 
@@ -31,10 +118,23 @@
   transform: translateY(-5px);
 }
 
+/* Image inside card */
 .admin-preview-card img {
   width: 100%;
   height: 140px;
   object-fit: cover;
   border-radius: 8px;
   margin-bottom: 10px;
+}
+
+/* Card content */
+.admin-preview-card h5 {
+  font-size: 18px;
+  margin: 10px 0 6px;
+  color: #222;
+}
+
+.admin-preview-card p {
+  font-size: 14px;
+  color: #555;
 }
