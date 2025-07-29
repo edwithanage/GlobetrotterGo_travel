@@ -13,6 +13,8 @@ function Home() {
           <Link to="/login" className="home-btn">Login</Link>
           <Link to="/register" className="home-btn">Register</Link>
           <Link to="/travel" className="home-btn">Explore Now</Link>
+          <Link to="/reviews" className="home-btn">Read Reviews</Link>
+
         </div>
       </header>
 
