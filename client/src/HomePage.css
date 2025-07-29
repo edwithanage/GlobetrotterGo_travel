@@ -1,0 +1,68 @@
+.home-hero {
+  background: linear-gradient(to right, #a8edea, #fed6e3);
+  min-height: 100vh;
+  padding: 40px;
+  text-align: center;
+  animation: fadeIn 1s ease-in;
+}
+
+.home-header h1 {
+  font-size: 3rem;
+  color: #2e7d32;
+  margin-bottom: 10px;
+  animation: slideDown 1s ease-in;
+}
+
+.home-header p {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.home-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.home-btn {
+  padding: 12px 20px;
+  background-color: #43a047;
+  color: white;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.home-btn:hover {
+  background-color: #2e7d32;
+}
+
+.home-section {
+  margin-top: 60px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 12px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.reviews blockquote {
+  font-style: italic;
+  margin: 10px 0;
+  color: #333;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-20px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
