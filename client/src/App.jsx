@@ -11,7 +11,11 @@ import EditTravelPlaceForm from './EditTravelPlaceForm';
 import Navbar from './Navbar';
 import AdminDashboard from './AdminDashboard';
 import Home from './HomePage'; // 👈 NEW Home page
-import ReviewPage from './ReviewPage'; // 👈 Add at top
+import Reviews from './Reviews'; // 👈 import this
+
+
+
+
 
 
 
@@ -35,7 +39,8 @@ function AppWrapper() {
         <Route path="/add-place" element={<AddTravelPlaceForm />} />
         <Route path="/edit/:id" element={<EditTravelPlaceForm />} />
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
-        <Route path="/reviews" element={<ReviewPage />} /> // 👈 Add this route
+        <Route path="/reviews" element={<Reviews />} />
+      
       </Routes>
     </>
   );

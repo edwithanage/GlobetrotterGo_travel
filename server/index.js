@@ -3,10 +3,15 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const bcrypt = require("bcryptjs");
 const TravelPlace = require("./models/TravelPlace");
+const reviewRoutes = require('./routes/reviews');
+
+
 
 const app = express();
 app.use(express.json());
 app.use(cors());
+
+app.use("/reviews", reviewRoutes);
 
 // ✅ Connect to MongoDB
 mongoose.connect("mongodb://127.0.0.1:27017/employee", {
